@@ -1,0 +1,807 @@
+:root{
+  --bg: #0b0b12;
+  --panel: rgba(255,255,255,.06);
+  --card: rgba(255,255,255,.08);
+  --line: rgba(255,255,255,.12);
+
+  --text: rgba(255,255,255,.92);
+  --muted: rgba(255,255,255,.62);
+
+  /* 💜 Purple accents */
+  --p1:#a855f7;   /* violet */
+  --p2:#7c3aed;   /* purple */
+  --p3:#22d3ee;   /* cyan for subtle gradient pop */
+
+  --max: 1100px;
+  --r: 18px;
+}
+
+*{ box-sizing:border-box; }
+html,body{ margin:0; padding:0; }
+body{
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans KR", Arial, sans-serif;
+  background: radial-gradient(1200px 600px at 20% 10%, rgba(168,85,247,.18), transparent 60%),
+              radial-gradient(900px 500px at 80% 0%, rgba(34,211,238,.12), transparent 55%),
+              var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+a{ color:inherit; text-decoration:none; }
+img{ width:100%; height:auto; display:block; }
+
+.container{
+  width: min(var(--max), calc(100% - 40px));
+  margin: 0 auto;
+}
+
+/* ===== Header ===== */
+.header{
+  position: sticky; top: 0;
+  z-index: 20;
+  background: rgba(11,11,18,.65);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line);
+}
+
+.nav{
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 0;
+}
+
+.logo{
+  font-weight: 750;
+  letter-spacing: .5px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+
+.menu{ display:flex; gap:16px; }
+.menu a{
+  color: var(--muted);
+  padding: 8px 10px;
+  border-radius: 12px;
+}
+.menu a:hover{
+  color: var(--text);
+  background: rgba(255,255,255,.06);
+}
+
+/* ===== Hero ===== */
+.hero{ padding: 54px 0 24px; }
+.hero-inner{
+  display:grid;
+  grid-template-columns: 1.2fr .8fr;
+  gap: 28px;
+  align-items: center;
+}
+
+h1{
+  font-size: 46px;
+  line-height: 1.1;
+  margin: 0 0 10px;
+  letter-spacing: -.5px;
+}
+.subtitle{
+  margin: 0 0 10px;
+  color: var(--muted);
+}
+.desc{
+  color: var(--muted);
+  max-width: 60ch;
+}
+
+.btn{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  margin-top: 14px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(168,85,247,.35);
+  background: linear-gradient(135deg, rgba(168,85,247,.20), rgba(124,58,237,.12));
+  box-shadow: 0 10px 30px rgba(168,85,247,.10);
+}
+.btn:hover{
+  box-shadow: 0 12px 35px rgba(168,85,247,.18);
+}
+
+.hero-img{
+  border-radius: calc(var(--r) + 4px);
+  border: 1px solid var(--line);
+  overflow:hidden;
+  background: rgba(255,255,255,.04);
+}
+.hero-img img{
+  transform: scale(1.02);
+}
+
+/* ===== Sections ===== */
+.section{
+  padding: 46px 0;
+  border-top: 1px solid var(--line);
+}
+h2{
+  font-size: 26px;
+  margin: 0 0 16px;
+  letter-spacing: -.2px;
+}
+
+/* ===== Instagram-like Grid ===== */
+.grid{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 18px;
+}
+
+.card{
+  border-radius: var(--r);
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.06));
+  box-shadow: 0 18px 50px rgba(0,0,0,.35);
+  transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+}
+
+.card:hover{
+  transform: translateY(-4px);
+  border-color: rgba(168,85,247,.35);
+  box-shadow: 0 22px 70px rgba(0,0,0,.45);
+}
+
+/* 이미지: 인스타처럼 정사각 느낌 */
+.card img{
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  background: rgba(255,255,255,.04);
+}
+
+.meta{
+  padding: 12px 12px 14px;
+  display:grid;
+  gap: 4px;
+}
+.title{
+  font-weight: 650;
+  display:flex;
+  align-items:center;
+  justify-content: space-between;
+}
+.title::after{
+  content:"";
+  width: 10px; height: 10px;
+  border-radius: 999px;
+  background: rgba(168,85,247,.55);
+  box-shadow: 0 0 14px rgba(168,85,247,.35);
+}
+.info{
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* About two-col */
+.two{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  margin-top: 16px;
+}
+ul{ margin: 10px 0 0; padding-left: 18px; color: var(--muted); }
+
+/* Footer */
+.footer{
+  border-top: 1px solid var(--line);
+  padding: 18px 0;
+  color: var(--muted);
+  text-align: center;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 900px){
+  .grid{ grid-template-columns: repeat(2, 1fr); }
+  .hero-inner{ grid-template-columns: 1fr; }
+  h1{ font-size: 38px; }
+}
+@media (max-width: 560px){
+  .grid{ grid-template-columns: 1fr; }
+  .menu{ gap: 10px; font-size: 14px; }
+  .two{ grid-template-columns: 1fr; }
+}
+
+/* ===== Modal ===== */
+/* ===== Modal (Instagram-like) ===== */
+.modal{
+  position: fixed;
+  inset: 0;
+  display: none;
+  z-index: 999;
+}
+.modal.open{ display:block; }
+
+.modal-backdrop{
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,.65);
+  backdrop-filter:none;
+}
+
+.modal-panel{
+  position: relative;
+  width: min(980px, calc(100% - 24px));
+  margin: 42px auto;
+  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,.14);
+  background: rgba(20,20,28,.75);
+  box-shadow: 0 30px 90px rgba(0,0,0,.55);
+  overflow: hidden;
+}
+
+.modal-img{
+  width: 100%;
+  height: auto;
+  max-height: 78vh;
+  object-fit: contain;
+  display:block;
+  background: rgba(255,255,255,.04);
+}
+
+.modal-meta{
+  padding: 12px 14px 14px;
+  border-top: 1px solid rgba(255,255,255,.12);
+  display: grid;
+  gap: 4px;
+}
+.modal-title{ font-weight: 700; }
+.modal-info{ color: rgba(255,255,255,.65); font-size: 14px; }
+
+.modal-close{
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 38px;
+  height: 38px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.18);
+  background: rgba(0,0,0,.35);
+  color: rgba(255,255,255,.92);
+  cursor: pointer;
+}
+.modal-close:hover{ background: rgba(0,0,0,.5); }
+
+.modal-nav{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.18);
+  background: rgba(0,0,0,.35);
+  color: rgba(255,255,255,.92);
+  cursor: pointer;
+  font-size: 28px;
+  line-height: 0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.modal-nav:hover{ background: rgba(0,0,0,.5); }
+
+.modal-nav.prev{ left: 10px; }
+.modal-nav.next{ right: 10px; }
+
+@media (max-width: 560px){
+  .modal-panel{ margin: 18px auto; }
+  .modal-nav{ display:none; } /* 모바일에서는 스와이프 대신 버튼 숨김 */
+}
+.modal{ display:none; }
+.modal.open{ display:block; }
+
+.modal{
+  position:fixed;
+  inset:0;
+  z-index:999;
+}
+.modal-backdrop{
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,.65);
+}
+.modal-panel{
+  position:relative;
+  width:min(980px, calc(100% - 24px));
+  margin:42px auto;
+  background:#111;
+  border:1px solid rgba(255,255,255,.15);
+  border-radius:18px;
+  overflow:hidden;
+}
+.modal-img{
+  width:100%;
+  max-height:80vh;
+  object-fit:contain;
+  display:block;
+}
+
+/* ===== Rotating Gallery A (smooth infinite spin) ===== */
+.rotator{
+  position: relative;
+  height: 520px;
+  margin-top: 22px;
+  perspective: 1100px;
+}
+
+.rotator-ring{
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: min(880px, 100%);
+  height: 520px;
+  transform-style: preserve-3d;
+
+  /* ✅ 부드러운 무한 회전 */
+   position: absolute;
+  inset: 0;
+  margin: auto;
+  width: min(880px, 100%);
+  height: 520px;
+  transform-style: preserve-3d;
+
+  /* ✅ JS가 돌릴 거라 animation 제거 */
+  /* animation: spinY 18s linear infinite; */
+
+  /* ✅ 회전할 때 부드럽게 */
+  transition: transform 900ms ease;
+}
+
+/* 마우스 올리면 잠깐 멈춤 (인스타 감성: 구경하기 좋음) */
+.rotator:hover .rotator-ring{
+  animation-play-state: paused;
+}
+
+@keyframes spinY{
+  from { transform: rotateY(0deg); }
+  to   { transform: rotateY(360deg); }
+}
+
+.rotator .card{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 260px;
+  transform: translate(-50%, -50%);
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.14);
+  background: rgba(255,255,255,.06);
+  box-shadow: 0 18px 60px rgba(0,0,0,.45);
+  cursor: pointer;
+}
+
+.rotator .card img{
+  aspect-ratio: 1 / 1;
+  width: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.rotator .meta{
+  padding: 10px 12px 12px;
+  border-top: 1px solid rgba(255,255,255,.10);
+}
+
+.rotator .title{ font-weight: 700; }
+.rotator .info{ color: rgba(255,255,255,.65); font-size: 14px; }
+
+/* 반응형 */
+@media (max-width: 900px){
+  .rotator{ height: 460px; }
+  .rotator-ring{ height: 460px; }
+  .rotator .card{ width: 220px; }
+}
+@media (max-width: 560px){
+  .rotator{ height: 420px; }
+  .rotator-ring{ height: 420px; }
+  .rotator .card{ width: 190px; }
+}
+/* ===== Depth effect: front sharp, back soft ===== */
+
+/* 기본 상태: 뒤쪽은 흐리게/작게/어둡게 */
+.rotator .card{
+  opacity: .55;
+  transform-origin: center;
+  transition: opacity .6s ease, filter .6s ease, transform .6s ease;
+}
+
+/* 앞쪽에 가까운 애들은 더 또렷하게 보이도록 */
+.rotator .card{
+  opacity: .18;
+  transition:
+    opacity .6s ease,
+    filter .6s ease,
+    transform .6s ease;
+  /* 3D에서 깊이(translateZ)가 클수록 더 선명하게 만들기 위해
+     box-shadow를 살짝 약하게 해도 깔끔해짐 */
+}
+/* ✅ 앞쪽 카드: 확 튀어나오게 */
+.rotator .card.is-front{
+  opacity: 1;
+  z-index: 10;
+}
+
+/* 앞 카드가 살짝 더 커 보이게 */
+.rotator .card.is-front{
+  transform:
+    translate(-50%, -50%)
+    scale(1.12)
+    var(--card-3d-transform);
+}
+/* “앞쪽에 오는 순간” 강조를 위한 마스크 느낌 */
+.rotator-ring{
+  /* 회전할 때 부드럽게 보이도록 살짝 안티앨리어싱 느낌 */
+  will-change: transform;
+}
+
+/* 카드가 나를 향해 올 때 자연스럽게 커지는 느낌 */
+
+
+/* 앞면 강조용 하이라이트(유리판 느낌) */
+.rotator .card::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: radial-gradient(700px 220px at 20% 0%,
+    rgba(168,85,247,.20),
+    transparent 55%);
+  opacity:.55;
+  pointer-events:none;
+}
+
+/* ===== 핵심: CSS로 '앞쪽일 때' 더 선명하게 보이게 만드는 트릭 =====
+   3D 회전 캐러셀에서 "앞쪽"을 완벽히 CSS만으로 판별하긴 어렵지만,
+   사용자 체감상 거의 동일하게 만드는 방법: ring에 '페이드 마스크'를 줘서
+   뒤쪽이 자동으로 어둡고 흐려 보이게 만든다.
+*/
+
+
+/* 클릭/감상 편하게: hover했을 때는 전체가 조금 더 또렷해짐 */
+.rotator:hover .card{
+  opacity:.65;
+}
+
+/* 사용자가 특정 카드에 마우스 올리면 그 카드만 “전면급”으로 */
+.rotator .card:hover{
+  opacity: 1;
+  z-index: 5;
+}
+/* hover 시 보조 강조 */
+.rotator .card.is-front:hover{
+  box-shadow:
+    0 30px 90px rgba(0,0,0,.55),
+    0 0 40px rgba(168,85,247,.35);
+}
+/* 모바일에서는 blur가 부담될 수 있어서 약하게 */
+@media (max-width: 560px){
+  .rotator .card{ }
+}
+/* ===== About (Instagram vibe) ===== */
+.about-card{
+  margin-top: 14px;
+  border-radius: 22px;
+  border: 1px solid rgba(255,255,255,.12);
+  background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.05));
+  box-shadow: 0 22px 80px rgba(0,0,0,.45);
+  overflow: hidden;
+}
+
+.about-top{
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 16px;
+  padding: 16px;
+  align-items: start;
+}
+
+.avatar-wrap{
+  width: 110px;
+  height: 110px;
+  border-radius: 999px;
+  padding: 3px;
+  background: linear-gradient(135deg, rgba(168,85,247,.9), rgba(34,211,238,.75));
+  box-shadow: 0 0 22px rgba(168,85,247,.25);
+}
+
+.avatar{
+  width: 100%;
+  height: 100%;
+  border-radius: 999px;
+  object-fit: cover;
+  border: 1px solid rgba(255,255,255,.16);
+  display:block;
+}
+
+.about-name{
+  font-size: 18px;
+  font-weight: 800;
+  display:flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.badge{
+  font-size: 12px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(168,85,247,.35);
+  background: rgba(168,85,247,.12);
+  color: rgba(255,255,255,.88);
+}
+
+.about-bio{
+  margin: 10px 0 12px;
+  color: rgba(255,255,255,.68);
+  max-width: 70ch;
+}
+
+.chips{
+  display:flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chip{
+  font-size: 12px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.14);
+  background: rgba(0,0,0,.25);
+  color: rgba(255,255,255,.78);
+}
+
+/* stats */
+.about-stats{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: rgba(255,255,255,.10);
+}
+
+.stat{
+  padding: 12px 10px;
+  background: rgba(0,0,0,.18);
+  text-align: center;
+}
+
+.stat-num{
+  font-size: 18px;
+  font-weight: 900;
+}
+
+.stat-label{
+  margin-top: 4px;
+  font-size: 12px;
+  color: rgba(255,255,255,.62);
+}
+
+/* timeline cards already used, but polish more */
+.timeline{
+  display:grid;
+  gap: 16px;
+  margin-top: 18px;
+}
+
+.event{
+  display:grid;
+  grid-template-columns: 240px 1fr;
+  gap: 16px;
+  padding: 14px;
+  border-radius: 22px;
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.06);
+  box-shadow: 0 18px 60px rgba(0,0,0,.35);
+  align-items: center;
+}
+
+.event-img{
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,.12);
+  cursor: zoom-in;
+  transition: transform .15s ease;
+}
+.event-img:hover{ transform: scale(1.01); }
+
+.event-title{
+  margin: 0 0 6px;
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.event-date{
+  margin: 0 0 8px;
+  color: rgba(255,255,255,.62);
+  font-size: 13px;
+}
+
+.event-desc{
+  margin: 0;
+  color: rgba(255,255,255,.72);
+}
+
+/* mobile */
+@media (max-width: 560px){
+  .about-top{
+    grid-template-columns: 80px 1fr;
+  }
+  .avatar-wrap{ width: 80px; height: 80px; }
+  .about-stats{ grid-template-columns: 1fr; }
+  .event{ grid-template-columns: 1fr; }
+}
+/* 모바일에서 가로 스와이프(회전) 하되, 세로 스크롤은 유지 */
+#rotator{ touch-action: pan-y; }
+
+/* ===== Blog ===== */
+.blog-tools{
+  margin-top: 10px;
+  display: grid;
+  gap: 10px;
+}
+
+.blog-search{
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,.04);
+  color: inherit;
+}
+
+.blog-tags{
+  display:flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tag{
+  border: 1px solid rgba(255,255,255,.14);
+  background: rgba(0,0,0,.20);
+  color: rgba(255,255,255,.85);
+  padding: 6px 10px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 13px;
+}
+.tag.is-active{
+  border-color: rgba(168,85,247,.45);
+  background: rgba(168,85,247,.14);
+}
+
+.blog-list{
+  margin-top: 16px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+
+.post{
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,.05);
+  box-shadow: 0 12px 36px rgba(0,0,0,.32);
+  display: grid;
+}
+
+.post-thumb img{
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  display:block;
+}
+
+.post-body{
+  padding: 12px 12px 14px;
+  display:grid;
+  gap: 8px;
+}
+
+.post-meta{
+  display:flex;
+  gap: 8px;
+  align-items:center;
+  color: rgba(255,255,255,.65);
+  font-size: 13px;
+}
+
+.post-badge{
+  padding: 4px 8px;
+  border-radius: 999px;
+  border: 1px solid rgba(168,85,247,.35);
+  background: rgba(168,85,247,.12);
+  color: rgba(255,255,255,.85);
+}
+
+.post-title{
+  margin: 0;
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.post-desc{
+  margin: 0;
+  color: rgba(255,255,255,.72);
+  line-height: 1.55;
+}
+
+.blog-more{
+  margin-top: 14px;
+  display:flex;
+  justify-content:center;
+}
+
+@media (max-width: 900px){
+  .blog-list{ grid-template-columns: 1fr; }
+}
+
+.logo::before,
+.logo::after{
+  content: none !important;
+  display: none !important;
+}
+
+/* Floating Social Buttons */
+.float-social{
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.fs-btn{
+  width: 46px;
+  height: 46px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(0,0,0,.08);
+  background: rgba(255,255,255,.92);
+  box-shadow: 0 12px 28px rgba(0,0,0,.12);
+  backdrop-filter: blur(10px);
+  transition: transform .18s ease, box-shadow .18s ease, opacity .18s ease;
+  opacity: .98;
+}
+
+.fs-btn:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 16px 34px rgba(0,0,0,.16);
+}
+
+.fs-btn svg{
+  width: 22px;
+  height: 22px;
+  fill: currentColor;
+}
+
+/* 각각 컬러 느낌만 살짝 */
+.fs-btn.kakao{ color: #1a1a1a; }
+.fs-btn.insta{ color: #111; }
+
+/* screen reader only */
+.sr-only{
+  position:absolute;
+  width:1px;height:1px;
+  padding:0;margin:-1px;
+  overflow:hidden;clip:rect(0,0,0,0);
+  white-space:nowrap;border:0;
+}
